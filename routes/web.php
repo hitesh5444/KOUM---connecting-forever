@@ -14,4 +14,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
+// for admin routes working
+include('admin.php');
+
 Route::get('/', [RegisterController::class,'index']);

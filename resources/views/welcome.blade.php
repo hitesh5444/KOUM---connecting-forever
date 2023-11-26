@@ -65,12 +65,19 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- <p>{{ $key }}</p> --}}
+                    <p>{{ $key }}</p>
                 </div>
+
+                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                    <input type="text" value="{{ $key }}">
+
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
+            </form>
                 </div>
                 </div>
         </div>

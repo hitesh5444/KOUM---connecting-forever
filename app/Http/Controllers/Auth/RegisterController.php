@@ -13,4 +13,8 @@ class RegisterController extends Controller
 
         return view('welcome', compact('key'));
     }
+
+    public function register(Request $request) {
+        dd($request);
+    }
 }

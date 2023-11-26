@@ -15,6 +15,11 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 // for admin routes working
-include('admin.php');
+// include('admin.php')
+
+Route::get('/admin', function () {
+    return view('admin.index');
+});
 
 Route::get('/', [RegisterController::class,'index']);
+Route::post('/register', [RegisterController::class,'register'])->name('register');

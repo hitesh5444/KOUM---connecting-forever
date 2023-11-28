@@ -17,9 +17,9 @@ use App\Http\Controllers\Auth\RegisterController;
 // for admin routes working
 // include('admin.php')
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
-
 Route::get('/', [RegisterController::class,'index']);
-Route::post('/register', [RegisterController::class,'register'])->name('register');
+Route::get('/dashboard', [RegisterController::class,'dashboard'])->name('admin.dashboard');
+Route::get('/admin/register', [RegisterController::class,'register'])->name('register');
+Route::get('/admin/profile', [RegisterController::class,'profile'])->name('profile');
+Route::post('/register', [RegisterController::class,'saveUser'])->name('admin.register');
+Route::put('/edit/{id}', [RegisterController::class, 'edit'])->name('admin.edit');

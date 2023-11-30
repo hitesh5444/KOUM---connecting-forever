@@ -8,28 +8,14 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
-    public function index() {
-        $key = Str::random(50);
-
-        return view('welcome', compact('key'));
-    }
-
-    public function dashboard() {
-        $user = User::get();
-
-        return view('admin.dashboard', compact('user'));
-    }
-
-    public function profile() {
-        $user = User::get();
-
-        return view('admin.profile', compact('user'));
-    }
-
     public function register(Request $request) {
         return view('admin.register');
     }
@@ -59,7 +45,7 @@ class RegisterController extends Controller
 
                 User::create($data);
 
-            return back()->with("success", "User Register Successfully!");
+                return redirect()->route('admin.login');
         } catch(\Exception $e){
             echo $e->getMessage();
             die();
@@ -87,6 +73,7 @@ class RegisterController extends Controller
             'twitter' => $request->input('twitter'),
             'twitter' => $request->input('twitter'),
             'linkedin' => $request->input('linkedin'),
+            'website' => $request->input('website'),
         ]);
 
         $file = $request->file('profile_image');
@@ -104,4 +91,41 @@ class RegisterController extends Controller
     return redirect()->route('profile')->with('success', 'User updated successfully');
 
     }
+
+    // Admin Login
+
+    public function showLogin() {
+        return view('admin.login');
+    }
+
+    public function login(Request $request)
+    {
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->with("error", "Login Fail, please check email id");
+        }
+
+        if (!Hash::check($request['password'], $user->password)) {
+            return back()->with("error", "Login Fail, please check password");
+        }
+
+        if ($user) {
+            Session::flush('user');
+            Session::put('user',$user);
+            Auth::login($user);
+            return redirect()->route('admin.dashboard');
+        } else {
+            // Handle invalid credentials
+            return back()->with('error', 'Invalid credentials');
+        }
+
+    }
+
+    public function logout(Request $request)
+    {
+        return redirect()->route('admin.login');
+    }
+
 }

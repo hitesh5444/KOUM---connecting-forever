@@ -103,14 +103,15 @@
 
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                             data-bs-toggle="dropdown">
-                            <img src="{{ asset('userImage/' . $value->profile_image) }}" alt="Profile"
-                                class="rounded-circle">
+                            <img class="rounded-circle" src="{{ asset('userImage/' . $value->profile_image) }}" height="50" width="40" alt="">
                             <span class="d-none d-md-block dropdown-toggle ps-2">{{ $value->name }}</span>
                         </a><!-- End Profile Iamge Icon -->
+                        @break
                     @endforeach
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
+                            <img class="rounded-circle" src="{{ asset('userImage/' . $value->profile_image) }}" height="50" width="50" alt=""><br><br>
                             <h6>{{ $value->name }}</h6>
                             <span>{{ $value->email }}</span>
                         </li>
@@ -128,7 +129,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.logout') }}">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -160,7 +161,7 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ route('admin.login') }}">
               <i class="bi bi-circle"></i><span>Alerts</span>
             </a>
           </li>

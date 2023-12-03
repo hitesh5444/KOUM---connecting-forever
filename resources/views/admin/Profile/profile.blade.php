@@ -20,15 +20,20 @@
                         <h2 class="pt-3">{{ $value->name }}</h2>
                         {{-- <h3>Web Designer</h3> --}}
                         <div class="social-links mt-2">
-                            <a href="{{ $value->twitter }}" target="_blank" class="btn btn-outline-dark"><i
+                            <a href="{{ $value->twitter }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Twitter" class="btn btn-outline-dark"><i
                                     class="bi bi-twitter"></i></a>
-                            <a href="{{ $value->facebook }}" target="_blank" class="btn btn-outline-dark"><i
+                            <a href="{{ $value->facebook }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Facebook" class="btn btn-outline-dark"><i
                                     class="bi bi-facebook"></i></a>
-                            <a href="{{ $value->instagram }}" target="_blank" class="btn btn-outline-dark"><i
+                            <a href="{{ $value->instagram }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Instagram" class="btn btn-outline-dark"><i
                                     class="bi bi-instagram"></i></a>
-                            <a href="{{ $value->linkedin }}" target="_blank" class="btn btn-outline-dark"><i
+                            <a href="{{ $value->linkedin }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Linkedin" class="btn btn-outline-dark"><i
                                     class="bi bi-linkedin"></i></a>
-                            <a href="{{ $value->website }}" target="_blank" class="btn btn-outline-dark"><i
+                            <a href="{{ $value->website }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Website" class="btn btn-outline-dark"><i
                                     class="bi bi-globe"></i></a>
                         </div>
                     </div>
@@ -74,7 +79,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Phone</div>
-                                    <div class="col-lg-9 col-md-8">{{ $value->phone }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ '+91'.' '.$value->phone }}</div>
                                 </div>
 
                                 <div class="row">
@@ -95,7 +100,8 @@
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                             Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img class="border border-secondary" src="{{ asset('userImage/' . $value->profile_image) }}" height="150"
+                                            <img class="border border-secondary"
+                                                src="{{ asset('userImage/' . $value->profile_image) }}" height="150"
                                                 width="150" alt="Profile">
                                             <div class="pt-2">
                                                 <input type="file" style="display: none" name="profile_image"
@@ -220,6 +226,6 @@
 
             </div>
         </div>
-        @break
-    @endforeach
+    @break
+@endforeach
 @endsection

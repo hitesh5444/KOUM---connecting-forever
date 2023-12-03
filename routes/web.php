@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,4 +31,12 @@ Route::post('/login', [RegisterController::class,'login'])->name('login');
 
 Route::get('/dashboard', [CommonController::class,'dashboard'])->name('admin.dashboard');
 Route::get('/admin/profile', [CommonController::class,'profile'])->name('profile');
+
+Route::get('/admin/project', [ProjectController::class, 'index'])->name('admin.project');
+Route::get('/admin/Project/add', [ProjectController::class, 'add'])->name('admin.project.add');
+Route::post('/admin/Project/create', [ProjectController::class, 'addProject'])->name('admin.add.project');
+Route::get('/admin/Project/edit/{id}', [ProjectController::class, 'edit'])->name('admin.project.edit');
+Route::put('/admin/Project/update/{id}', [ProjectController::class, 'update'])->name('admin.project.update');
+Route::get('/admin/Project/view/{id}', [ProjectController::class, 'view'])->name('admin.project.view');
+Route::delete('/admin/Project/destroy/{id}', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
 

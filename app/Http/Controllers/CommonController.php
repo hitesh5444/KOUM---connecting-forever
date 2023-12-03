@@ -24,6 +24,6 @@ class CommonController extends Controller
     public function profile() {
         $user = User::get();
 
-        return view('admin.profile', compact('user'));
+        return view('admin.Profile.profile', compact('user'));
     }
 }

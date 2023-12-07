@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Shivsigma Infotech</title>
+    <title>Shivsigma Infotech - Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -119,6 +119,13 @@
                 <a class="nav-link collapsed" href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.banner') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Banner</span>
                 </a>
             </li>
 

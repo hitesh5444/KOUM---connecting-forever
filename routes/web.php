@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\AllController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -16,6 +18,8 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', [AllController::class, 'index']);
 
 // for User Register
 Route::get('/register', [RegisterController::class,'register'])->name('admin.register');
@@ -40,3 +44,5 @@ Route::put('/admin/Project/update/{id}', [ProjectController::class, 'update'])->
 Route::get('/admin/Project/view/{id}', [ProjectController::class, 'view'])->name('admin.project.view');
 Route::delete('/admin/Project/destroy/{id}', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
 
+
+Route::get('/admin/banner', [BannerController::class, 'index'])->name('admin.banner');
